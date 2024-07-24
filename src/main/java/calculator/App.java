@@ -53,8 +53,16 @@ public class App {
                     return;
             }
 
+            if(count == 10){
+                for(int i = 0; i < 9; i++){
+                    resultArray[i] =  resultArray[i+1];
+                }
 
-            resultArray[count] = total;
+                resultArray[9] = total;
+            }else{
+                resultArray[count] = total;
+                count++;
+            }
 
             System.out.println("결과: " + total);
 
@@ -67,8 +75,6 @@ public class App {
                 sc.close();
                 // 메서드 종료
                 return;
-            }else{
-                count++;
             }
 
         }
