@@ -34,7 +34,7 @@ public class App {
 
             System.out.print("사칙연산 기호를 입력하세요 : ");
             // 사칙연산 기호를 적합한 타입으로 선언한 변수에 저장합니다.
-            String inputSymbols = sc.next();
+            String inputSymbols = sc.nextLine();
             char symbols = inputSymbols.charAt(0);
 
             while(symbols != '+' && symbols != '-' && symbols != '*' && symbols != '/'){
@@ -73,6 +73,11 @@ public class App {
 //                count++;
 //            }
 
+
+            // 이부분에 해당코드가 있는 이유
+            // 두번째 숫자를 입력하고 Enter를 쳤다면 10\이 존재한다.
+            // 이때 nextInt()가 버퍼의 내용을 가져올 때 개행문자를 무시하고 가져오기 때문에 10만 가져오게 된다.
+            // 그러면 버퍼에 \n이 남아있는데 nextLine()은 공백문자, 개행문자를 포함시키기 때문에 \n을 가져오게되고 다음 코드로 넘어가버리는 것이다.
             sc.nextLine();
 
             System.out.println("결과: " + total);
