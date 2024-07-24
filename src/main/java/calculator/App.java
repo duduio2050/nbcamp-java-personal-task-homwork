@@ -1,5 +1,6 @@
 package calculator;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -7,11 +8,11 @@ public class App {
     public static void main(String[] args) {
 
         // 연산결과 저장
-        int[] resultArray = new int[10];
+        ArrayList<Integer> resultArray = new ArrayList<>();
 
         Scanner sc = new Scanner(System.in);
 
-        int count = 0;
+//        int count = 0;
         while (true) {
             System.out.print("첫 번째 숫자를 입력하세요: ");
             // Scanner 사용하여 양의 정수를 입력받고 적합한 타입의 변수에 저장합니다.
@@ -58,20 +59,33 @@ public class App {
                     break;
             }
 
-            if(count == 10){
-                for(int i = 0; i < 9; i++){
-                    resultArray[i] =  resultArray[i+1];
-                }
 
-                resultArray[9] = total;
-            }else{
-                resultArray[count] = total;
-                count++;
-            }
+            // ArrayList 에 데이터 추가
+            resultArray.add(total);
+//            if(count == 10){
+//                for(int i = 0; i < 9; i++){
+//                    resultArray[i] =  resultArray[i+1];
+//                }
+//
+//                resultArray[9] = total;
+//            }else{
+//                resultArray[count] = total;
+//                count++;
+//            }
 
             System.out.println("결과: " + total);
 
-            System.out.println("더 계산하시겠습니까? (exit 입력 시 종료)");
+            System.out.println("가장 먼저 저장된 연산 결과를 삭제하시겠습니까? (remove 입력 시 삭제) : ");
+            String remove = sc.next();
+
+            // 입력값 확인
+            if (remove.equals("remove")){
+                // 인덱스로 데이터 삭제
+                // 해당 인덱스가 삭제되면 해당 인덱스가 다음 인덱스가 한칸 앞으로 자동으로 밀려남
+                resultArray.remove(0);
+            }
+
+            System.out.print("더 계산하시겠습니까? (exit 입력 시 종료) : ");
             // 다음 입력값 확인
             String next = sc.next();
             // 입력값이 exit 인지 확인
@@ -82,6 +96,8 @@ public class App {
                 return;
             }
 
+            // 리스트 출력
+            System.out.println(resultArray.toString());
         }
     }
 }
