@@ -50,12 +50,14 @@ public class App {
             System.out.println("결과: " + total);
 
             System.out.println("더 계산하시겠습니까? (exit 입력 시 종료)");
+            // 다음 입력값 확인
             String next = sc.next();
+            // 입력값이 exit 인지 확인
             if(next.equals("exit")){
+                // 입력창 닫기
                 sc.close();
+                // 메서드 종료
                 return;
-            }else{
-                continue;
             }
         }
 
