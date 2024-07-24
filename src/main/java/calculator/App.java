@@ -14,11 +14,11 @@ public class App {
 
 //        int count = 0;
         while (true) {
-            System.out.print("첫 번째 숫자를 입력하세요: ");
+            System.out.print("첫 번째 숫자를 입력하세요 : ");
             // Scanner 사용하여 양의 정수를 입력받고 적합한 타입의 변수에 저장합니다.
             int firstNum = sc.nextInt();
 
-            System.out.print("두 번째 숫자를 입력하세요: ");
+            System.out.print("두 번째 숫자를 입력하세요 : ");
             // Scanner를 사용하여 양의 정수를 입력받고 적합한 타입의 변수에 저장합니다.
             int secondNum = sc.nextInt();
 
@@ -32,7 +32,7 @@ public class App {
 //                return;
             }
 
-            System.out.print("사칙연산 기호를 입력하세요: ");
+            System.out.print("사칙연산 기호를 입력하세요 : ");
             // 사칙연산 기호를 적합한 타입으로 선언한 변수에 저장합니다.
             String inputSymbols = sc.next();
             char symbols = inputSymbols.charAt(0);
@@ -73,10 +73,12 @@ public class App {
 //                count++;
 //            }
 
+            sc.nextLine();
+
             System.out.println("결과: " + total);
 
             System.out.println("가장 먼저 저장된 연산 결과를 삭제하시겠습니까? (remove 입력 시 삭제) : ");
-            String remove = sc.next();
+            String remove = sc.nextLine();
 
             // 입력값 확인
             if (remove.equals("remove")){
@@ -85,19 +87,36 @@ public class App {
                 resultArray.remove(0);
             }
 
+            System.out.println("저장된 연산결과를 조회하시겠습니까? (inquiry 입력 시 조회) : ");
+            String printAll = sc.nextLine();
+            if(printAll.equals("inquiry")){
+                // 그대로 출력하는 방법
+//                System.out.println(resultArray.toString());
+                int count = 0;
+                String resultTotal = "";
+                for(Integer totalNumber : resultArray){
+                    if(count == 0){
+                        resultTotal += "연산결과 : " + totalNumber;
+                    }else{
+                        resultTotal += ", " + totalNumber;
+                    }
+                    count++;
+                }
+
+                System.out.println(resultTotal);
+            }
+
+
             System.out.print("더 계산하시겠습니까? (exit 입력 시 종료) : ");
             // 다음 입력값 확인
-            String next = sc.next();
+            String exit = sc.nextLine();
             // 입력값이 exit 인지 확인
-            if(next.equals("exit")){
+            if(exit.equals("exit")){
                 // 입력창 닫기
                 sc.close();
                 // 메서드 종료
                 return;
             }
-
-            // 리스트 출력
-            System.out.println(resultArray.toString());
         }
     }
 }
