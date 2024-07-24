@@ -1,11 +1,17 @@
 package calculator;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class App {
     public static void main(String[] args) {
+
+        // 연산결과 저장
+        int[] resultArray = new int[10];
+
         Scanner sc = new Scanner(System.in);
 
+        int count = 0;
         while (true) {
             System.out.print("첫 번째 숫자를 입력하세요: ");
             // Scanner 사용하여 양의 정수를 입력받고 적합한 타입의 변수에 저장합니다.
@@ -47,6 +53,9 @@ public class App {
                     return;
             }
 
+
+            resultArray[count] = total;
+
             System.out.println("결과: " + total);
 
             System.out.println("더 계산하시겠습니까? (exit 입력 시 종료)");
@@ -58,10 +67,10 @@ public class App {
                 sc.close();
                 // 메서드 종료
                 return;
+            }else{
+                count++;
             }
+
         }
-
-
-
     }
 }
