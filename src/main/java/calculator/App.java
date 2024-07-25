@@ -79,18 +79,7 @@ public class App {
             if(printAll.equals("inquiry")){
                 // 그대로 출력하는 방법
 //                System.out.println(resultArray.toString());
-                int count = 0;
-                String resultTotal = "";
-                for(Integer totalNumber : calculatorArray){
-                    if(count == 0){
-                        resultTotal += "연산결과 : " + totalNumber;
-                    }else{
-                        resultTotal += ", " + totalNumber;
-                    }
-                    count++;
-                }
-
-                System.out.println(resultTotal);
+                calculator.inquiryResults();
             }
 
 

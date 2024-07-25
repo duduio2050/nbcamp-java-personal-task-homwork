@@ -45,6 +45,22 @@ public class Calculator {
     public void removeResult() {
         this.totalData.remove(0);
     }
+
+    public void inquiryResults() {
+        /* 구현 */
+        int count = 0;
+        String resultTotal = "";
+        for(Integer totalNumber : this.totalData){
+            if(count == 0){
+                resultTotal += "연산결과 : " + totalNumber;
+            }else{
+                resultTotal += ", " + totalNumber;
+            }
+            count++;
+        }
+
+        System.out.println(resultTotal);
+    }
 }
 
 
