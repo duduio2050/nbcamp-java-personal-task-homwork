@@ -18,68 +18,105 @@ public class App {
 
 //        int count = 0;
         while (true) {
-            System.out.print("첫 번째 숫자를 입력하세요 : ");
+            System.out.print("사칙연산을 진행하시려면 o, 원의 넓이를 구하시려면 x 를 입력해주세요.");
             // Scanner 사용하여 양의 정수를 입력받고 적합한 타입의 변수에 저장합니다.
-            int firstNum = sc.nextInt();
+            String checkType = sc.next();
+            char type = checkType.charAt(0);
 
-            System.out.print("두 번째 숫자를 입력하세요 : ");
-            // Scanner를 사용하여 양의 정수를 입력받고 적합한 타입의 변수에 저장합니다.
-            int secondNum = sc.nextInt();
+            while(type != 'o' && type != 'x'){
+                System.out.print("잘못된 입력 값입니다. 다시 입력해주세요 : ");
+                checkType = sc.next();
+                type = checkType.charAt(0);
+            }
 
-            while(secondNum == 0) {
-                System.out.print("두번째 정수는 0 이 될 수 없습니다. 다시 입력해주세요 : ");
-                // 0 인 경우 입력값 다시받기
-                secondNum = sc.nextInt();
+            sc.nextLine();
+
+            // 사칙연산인 경우
+            if(type == 'o'){
+                System.out.print("첫 번째 숫자를 입력하세요 : ");
+                // Scanner 사용하여 양의 정수를 입력받고 적합한 타입의 변수에 저장합니다.
+                int firstNum = sc.nextInt();
+
+                System.out.print("두 번째 숫자를 입력하세요 : ");
+                // Scanner를 사용하여 양의 정수를 입력받고 적합한 타입의 변수에 저장합니다.
+                int secondNum = sc.nextInt();
+
+                while(secondNum == 0) {
+                    System.out.print("두번째 정수는 0 이 될 수 없습니다. 다시 입력해주세요 : ");
+                    // 0 인 경우 입력값 다시받기
+                    secondNum = sc.nextInt();
 //                // 입력창 닫기
 //                sc.close();
 //                // 메서드 종료
 //                return;
-            }
+                }
 
-            System.out.print("사칙연산 기호를 입력하세요 : ");
-            // 사칙연산 기호를 적합한 타입으로 선언한 변수에 저장합니다.
-            String inputSymbols = sc.next();
-            char symbols = inputSymbols.charAt(0);
+                System.out.print("사칙연산 기호를 입력하세요 : ");
+                // 사칙연산 기호를 적합한 타입으로 선언한 변수에 저장합니다.
+                String inputSymbols = sc.next();
+                char symbols = inputSymbols.charAt(0);
 
-            while(symbols != '+' && symbols != '-' && symbols != '*' && symbols != '/'){
-                System.out.print("올바른 연산 기호를 입력해주세요. 다시 입력해주세요 : ");
-                inputSymbols = sc.next();
-                symbols = inputSymbols.charAt(0);
-            }
+                while(symbols != '+' && symbols != '-' && symbols != '*' && symbols != '/'){
+                    System.out.print("올바른 연산 기호를 입력해주세요. 다시 입력해주세요 : ");
+                    inputSymbols = sc.next();
+                    symbols = inputSymbols.charAt(0);
+                }
 
-            // 현재 저장된 데이터를 불러옴
-            List<Integer> calculatorArray = calculator.getResult();
-            // 계산 결과 값
-            Integer total = calculator.calculate(firstNum, secondNum, symbols);
-            // 계산 결과 값을 가져온 필드 list 에 저장
-            calculatorArray.add(total);
-            // 필드에 저장
-            calculator.setResult(calculatorArray);
+                // 현재 저장된 데이터를 불러옴
+                List<Integer> calculatorArray = calculator.getResult();
+                // 계산 결과 값
+                int total = calculator.calculate(firstNum, secondNum, symbols);
+                // 계산 결과 값을 가져온 필드 list 에 저장
+                calculatorArray.add(total);
+                // 필드에 저장
+                calculator.setResult(calculatorArray);
 
-            // 이부분에 해당코드가 있는 이유
-            // 두번째 숫자를 입력하고 Enter를 쳤다면 10\이 존재한다.
-            // 이때 nextInt()가 버퍼의 내용을 가져올 때 개행문자를 무시하고 가져오기 때문에 10만 가져오게 된다.
-            // 그러면 버퍼에 \n이 남아있는데 nextLine()은 공백문자, 개행문자를 포함시키기 때문에 \n을 가져오게되고 다음 코드로 넘어가버리는 것이다.
-            sc.nextLine();
+                // 이부분에 해당코드가 있는 이유
+                // 두번째 숫자를 입력하고 Enter를 쳤다면 10\이 존재한다.
+                // 이때 nextInt()가 버퍼의 내용을 가져올 때 개행문자를 무시하고 가져오기 때문에 10만 가져오게 된다.
+                // 그러면 버퍼에 \n이 남아있는데 nextLine()은 공백문자, 개행문자를 포함시키기 때문에 \n을 가져오게되고 다음 코드로 넘어가버리는 것이다.
+                sc.nextLine();
 
-            System.out.println("결과: " + total);
+                System.out.println("결과: " + total);
 
-            System.out.println("가장 먼저 저장된 연산 결과를 삭제하시겠습니까? (remove 입력 시 삭제) : ");
-            String remove = sc.nextLine();
+                System.out.println("가장 먼저 저장된 연산 결과를 삭제하시겠습니까? (remove 입력 시 삭제) : ");
+                String remove = sc.nextLine();
 
-            // 입력값 확인
-            if (remove.equals("remove")){
-                // 인덱스로 데이터 삭제
-                // 해당 인덱스가 삭제되면 해당 인덱스가 다음 인덱스가 한칸 앞으로 자동으로 밀려남
-                calculator.removeResult();
-            }
+                // 입력값 확인
+                if (remove.equals("remove")){
+                    // 인덱스로 데이터 삭제
+                    // 해당 인덱스가 삭제되면 해당 인덱스가 다음 인덱스가 한칸 앞으로 자동으로 밀려남
+                    calculator.removeResult();
+                }
 
-            System.out.println("저장된 연산결과를 조회하시겠습니까? (inquiry 입력 시 조회) : ");
-            String printAll = sc.nextLine();
-            if(printAll.equals("inquiry")){
-                // 그대로 출력하는 방법
+                System.out.println("저장된 연산결과를 조회하시겠습니까? (inquiry 입력 시 조회) : ");
+                String printAll = sc.nextLine();
+                if(printAll.equals("inquiry")){
+                    // 그대로 출력하는 방법
 //                System.out.println(resultArray.toString());
-                calculator.inquiryResults();
+                    calculator.inquiryResults();
+                }
+            // 원의 넓이를 구하는 경우
+            } else if (type == 'x'){
+                System.out.print("원의 반지름 값을 입력해주세요 : ");
+                // Scanner 사용하여 양의 정수를 입력받고 적합한 타입의 변수에 저장합니다.
+                int radius = sc.nextInt();
+
+                // 원의 넓이 계산
+                Double circleArea = calculator.calculateCircleArea(radius);
+
+                System.out.println("원의 넓이 : " + circleArea);
+
+                // 원의 넓이를 저장
+                List<Double> circleAreaArray = calculator.getRadius();
+                circleAreaArray.add(circleArea);
+                calculator.setRadius(circleAreaArray);
+
+                // 저장된 원의 넓이 값들 바로 전체 조회
+                System.out.println("원의 넓이 결과 : " + circleAreaArray);
+
+                sc.nextLine();
+
             }
 
 

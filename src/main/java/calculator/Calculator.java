@@ -4,10 +4,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Calculator {
-    /* 연산 결과를 저장하는 컬렉션 타입 필드 선언 및 생성 */
-    private List<Integer> totalData = new ArrayList<>();
 
-    public Integer calculate(int firstNum, int secondNum, char operation) throws DivisionByZeroException, InvalidOperatorException {
+    // 원주율은 값이 무한대이고 변하지 않는 값이기 떄문에 함수로 생성하지 않고 저장합니다.
+    static final double pi = 3.14;
+
+    /* 연산 결과를 저장하는 컬렉션 타입 필드 선언 및 생성 */
+    private List<Integer> totalData;
+
+    // 원의 넓이를 저장하는 필드
+    private List<Double> circleAreaData;
+
+    public Calculator (){
+        this.totalData = new ArrayList<>();
+        this.circleAreaData = new ArrayList<>();
+    }
+
+    public int calculate(int firstNum, int secondNum, char operation) throws DivisionByZeroException, InvalidOperatorException {
 
         if(operation == '/'){
             if (secondNum == 0) {
@@ -61,6 +73,19 @@ public class Calculator {
 
         System.out.println(resultTotal);
     }
+
+    public Double calculateCircleArea(int r){
+        return pi * (r * r);
+    }
+
+    public List<Double> getRadius(){
+        return circleAreaData;
+    }
+
+    public void setRadius(List<Double> circleAreaData){
+        this.circleAreaData = circleAreaData;
+    }
+
 }
 
 
