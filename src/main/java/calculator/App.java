@@ -8,11 +8,10 @@ import java.util.Scanner;
 public class App {
     public static void main(String[] args) throws InvalidOperatorException, DivisionByZeroException {
 
-        // 연산결과 저장
-//        ArrayList<Integer> resultArray = new ArrayList<>();
-
-        // 인스턴스 생성
-        Calculator calculator = new Calculator();
+        // 사칙연산 객체 인스턴스 생성
+        ArithmeticCalculator arithmeticCalculator = new ArithmeticCalculator();
+        // 원의 넓이 객체 인스턴스 생성
+        CircleCalculator circleCalculator = new CircleCalculator();
 
         Scanner sc = new Scanner(System.in);
 
@@ -41,14 +40,8 @@ public class App {
                 // Scanner를 사용하여 양의 정수를 입력받고 적합한 타입의 변수에 저장합니다.
                 int secondNum = sc.nextInt();
 
-                while(secondNum == 0) {
-                    System.out.print("두번째 정수는 0 이 될 수 없습니다. 다시 입력해주세요 : ");
-                    // 0 인 경우 입력값 다시받기
-                    secondNum = sc.nextInt();
-//                // 입력창 닫기
-//                sc.close();
-//                // 메서드 종료
-//                return;
+                if(secondNum == 0) {
+                    throw new DivisionByZeroException("분모는 0이 될 수 없습니다.");
                 }
 
                 System.out.print("사칙연산 기호를 입력하세요 : ");
@@ -56,20 +49,18 @@ public class App {
                 String inputSymbols = sc.next();
                 char symbols = inputSymbols.charAt(0);
 
-                while(symbols != '+' && symbols != '-' && symbols != '*' && symbols != '/'){
-                    System.out.print("올바른 연산 기호를 입력해주세요. 다시 입력해주세요 : ");
-                    inputSymbols = sc.next();
-                    symbols = inputSymbols.charAt(0);
+                if (symbols != '+' && symbols != '-' && symbols != '*' && symbols != '/'){
+                    throw new InvalidOperatorException("올바른 연산 기호를 입력해주세요.");
                 }
 
                 // 현재 저장된 데이터를 불러옴
-                List<Integer> calculatorArray = calculator.getResult();
+                List<Integer> calculatorArray = arithmeticCalculator.getResult();
                 // 계산 결과 값
-                int total = calculator.calculate(firstNum, secondNum, symbols);
+                int total = arithmeticCalculator.calculate(firstNum, secondNum, symbols);
                 // 계산 결과 값을 가져온 필드 list 에 저장
                 calculatorArray.add(total);
                 // 필드에 저장
-                calculator.setResult(calculatorArray);
+                arithmeticCalculator.setResult(calculatorArray);
 
                 // 이부분에 해당코드가 있는 이유
                 // 두번째 숫자를 입력하고 Enter를 쳤다면 10\이 존재한다.
@@ -86,7 +77,7 @@ public class App {
                 if (remove.equals("remove")){
                     // 인덱스로 데이터 삭제
                     // 해당 인덱스가 삭제되면 해당 인덱스가 다음 인덱스가 한칸 앞으로 자동으로 밀려남
-                    calculator.removeResult();
+                    arithmeticCalculator.removeResult();
                 }
 
                 System.out.println("저장된 연산결과를 조회하시겠습니까? (inquiry 입력 시 조회) : ");
@@ -94,7 +85,7 @@ public class App {
                 if(printAll.equals("inquiry")){
                     // 그대로 출력하는 방법
 //                System.out.println(resultArray.toString());
-                    calculator.inquiryResults();
+                    arithmeticCalculator.inquiryResults();
                 }
             // 원의 넓이를 구하는 경우
             } else if (type == 'x'){
@@ -103,17 +94,17 @@ public class App {
                 int radius = sc.nextInt();
 
                 // 원의 넓이 계산
-                Double circleArea = calculator.calculateCircleArea(radius);
+                Double circleArea = circleCalculator.calculateCircle(radius);
 
                 System.out.println("원의 넓이 : " + circleArea);
 
                 // 원의 넓이를 저장
-                List<Double> circleAreaArray = calculator.getRadius();
-                circleAreaArray.add(circleArea);
-                calculator.setRadius(circleAreaArray);
+                List<Double> calculatorCircleAreaArray = circleCalculator.getRadius();
+                calculatorCircleAreaArray.add(circleArea);
+                circleCalculator.setRadius(calculatorCircleAreaArray);
 
                 // 저장된 원의 넓이 값들 바로 전체 조회
-                System.out.println("원의 넓이 결과 : " + circleAreaArray);
+                System.out.println("원의 넓이 결과 : " + calculatorCircleAreaArray);
 
                 sc.nextLine();
 

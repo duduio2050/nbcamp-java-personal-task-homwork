@@ -3,9 +3,8 @@ package calculator;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Calculator {
+public abstract class Calculator {
 
-    // 원주율은 값이 무한대이고 변하지 않는 값이기 떄문에 함수로 생성하지 않고 저장합니다.
     static final double pi = 3.14;
 
     /* 연산 결과를 저장하는 컬렉션 타입 필드 선언 및 생성 */
@@ -17,33 +16,6 @@ public class Calculator {
     public Calculator (){
         this.totalData = new ArrayList<>();
         this.circleAreaData = new ArrayList<>();
-    }
-
-    public int calculate(int firstNum, int secondNum, char operation) throws DivisionByZeroException, InvalidOperatorException {
-
-        if(operation == '/'){
-            if (secondNum == 0) {
-                throw new DivisionByZeroException("분모는 0이 될 수 없습니다.");
-            }
-        }
-
-        int total = 0;
-        switch(operation){
-            case '+':
-                total = firstNum + secondNum;
-                break;
-            case '-':
-                total = firstNum - secondNum;
-                break;
-            case '*':
-                total = firstNum * secondNum;
-                break;
-            case '/':
-                total = firstNum / secondNum;
-                break;
-        }
-        /* return 연산 결과 */
-        return total;
     }
 
     public List<Integer> getResult(){
@@ -60,22 +32,11 @@ public class Calculator {
 
     public void inquiryResults() {
         /* 구현 */
-        int count = 0;
-        String resultTotal = "";
+        String resultTotal = "연산결과 : ";
         for(Integer totalNumber : this.totalData){
-            if(count == 0){
-                resultTotal += "연산결과 : " + totalNumber;
-            }else{
-                resultTotal += ", " + totalNumber;
-            }
-            count++;
+            resultTotal += totalNumber + ", ";
         }
-
         System.out.println(resultTotal);
-    }
-
-    public Double calculateCircleArea(int r){
-        return pi * (r * r);
     }
 
     public List<Double> getRadius(){
@@ -85,6 +46,10 @@ public class Calculator {
     public void setRadius(List<Double> circleAreaData){
         this.circleAreaData = circleAreaData;
     }
+
+    public abstract int calculate(int firstNum, int secondNum, char operation);
+
+    public abstract double calculateCircle(int r);
 
 }
 
