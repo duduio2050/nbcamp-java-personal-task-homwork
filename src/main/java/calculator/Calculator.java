@@ -41,6 +41,10 @@ public class Calculator {
     public void setResult(List<Integer> totalData){
         this.totalData = totalData;
     }
+
+    public void removeResult() {
+        this.totalData.remove(0);
+    }
 }
 
 

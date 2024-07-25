@@ -71,7 +71,7 @@ public class App {
             if (remove.equals("remove")){
                 // 인덱스로 데이터 삭제
                 // 해당 인덱스가 삭제되면 해당 인덱스가 다음 인덱스가 한칸 앞으로 자동으로 밀려남
-                calculatorArray.remove(0);
+                calculator.removeResult();
             }
 
             System.out.println("저장된 연산결과를 조회하시겠습니까? (inquiry 입력 시 조회) : ");
