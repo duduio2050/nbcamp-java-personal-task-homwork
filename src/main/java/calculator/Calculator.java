@@ -5,9 +5,9 @@ import java.util.List;
 
 public class Calculator {
     /* 연산 결과를 저장하는 컬렉션 타입 필드 선언 및 생성 */
-    List<Integer> totalData = new ArrayList<>();
+    private List<Integer> totalData = new ArrayList<>();
 
-    public int calculate(int firstNum, int secondNum, char operation) throws DivisionByZeroException, InvalidOperatorException {
+    public Integer calculate(int firstNum, int secondNum, char operation) throws DivisionByZeroException, InvalidOperatorException {
 
         if(operation == '/'){
             if (secondNum == 0) {
@@ -30,6 +30,9 @@ public class Calculator {
                 total = firstNum / secondNum;
                 break;
         }
+
+        // ArrayList 에 데이터 추가
+        totalData.add(total);
         /* return 연산 결과 */
         return total;
     }

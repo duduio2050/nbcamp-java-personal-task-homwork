@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class App {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InvalidOperatorException, DivisionByZeroException {
 
         // 연산결과 저장
         ArrayList<Integer> resultArray = new ArrayList<>();
@@ -43,25 +43,9 @@ public class App {
                 symbols = inputSymbols.charAt(0);
             }
 
-            int total = 0;
-            switch(symbols){
-                case '+':
-                    total = firstNum + secondNum;
-                    break;
-                case '-':
-                    total = firstNum - secondNum;
-                    break;
-                case '*':
-                    total = firstNum * secondNum;
-                    break;
-                case '/':
-                    total = firstNum / secondNum;
-                    break;
-            }
+            Calculator calculator = new Calculator();
+            Integer total = calculator.calculate(firstNum, secondNum, symbols);
 
-
-            // ArrayList 에 데이터 추가
-            resultArray.add(total);
 //            if(count == 10){
 //                for(int i = 0; i < 9; i++){
 //                    resultArray[i] =  resultArray[i+1];
