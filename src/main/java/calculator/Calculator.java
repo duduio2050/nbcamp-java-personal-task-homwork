@@ -30,11 +30,16 @@ public class Calculator {
                 total = firstNum / secondNum;
                 break;
         }
-
-        // ArrayList 에 데이터 추가
-        totalData.add(total);
         /* return 연산 결과 */
         return total;
+    }
+
+    public List<Integer> getResult(){
+        return totalData;
+    }
+
+    public void setResult(List<Integer> totalData){
+        this.totalData = totalData;
     }
 }
 
