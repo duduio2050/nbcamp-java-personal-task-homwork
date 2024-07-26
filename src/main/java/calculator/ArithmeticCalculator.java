@@ -15,11 +15,7 @@ public class ArithmeticCalculator extends Calculator{
         this.operatorFactory = operatorFactory;
     }
 
-    public int calculate(int firstNum, int secondNum, char operation) throws InvalidOperatorException, DivisionByZeroException {
-
-        if (operation != '+' && operation != '-' && operation != '*' && operation != '/'){
-            throw new InvalidOperatorException("올바른 연산 기호를 입력해주세요.");
-        }
+    public int calculate(int firstNum, int secondNum, char operation) throws  InvalidOperatorException, DivisionByZeroException {
 
         operator = operatorFactory.getOperation(operation);
         int total = 0;
