@@ -2,6 +2,6 @@ package calculator.operator;
 
 import calculator.exception.DivisionByZeroException;
 
-public interface Operation{
-    int operate(int a, int b) throws DivisionByZeroException;
+public interface Operation<T, Y>{
+    double operate(T a, Y b) throws DivisionByZeroException;
 }

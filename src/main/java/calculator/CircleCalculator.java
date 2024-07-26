@@ -5,7 +5,8 @@ import java.util.List;
 
 public class CircleCalculator extends Calculator{
 
-    public int calculate(int firstNum, int secondNum, char operation){
+    @Override
+    public <T extends Number, Y extends Number> double calculate(T firstNum, Y secondNum, char operation){
         throw new UnsupportedOperationException("지원하지 않습니다.");
     }
 

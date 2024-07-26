@@ -11,6 +11,9 @@ public class App {
 
     public static void main(String[] args) throws InvalidOperatorException, DivisionByZeroException {
 
+        // 사칙연산의 인자에 넣을 원하는 사칙연산을 찍어낼 factory 인스턴스를 넣고 있다
+        // 의존성 주입의 역전을 구현하기 위해 인터페이스를 구현하고 더 확장성 있도록 구현하는게 맞을까??
+        // 내가 내린 결론은
         OperatorFactory operatorFactory = new OperatorFactory();
 
         // 사칙연산 객체 인스턴스 생성
@@ -39,11 +42,11 @@ public class App {
             if(type == 'o'){
                 System.out.print("첫 번째 숫자를 입력하세요 : ");
                 // Scanner 사용하여 양의 정수를 입력받고 적합한 타입의 변수에 저장합니다.
-                int firstNum = sc.nextInt();
+                double firstNum = Double.parseDouble(sc.nextLine());
 
                 System.out.print("두 번째 숫자를 입력하세요 : ");
                 // Scanner를 사용하여 양의 정수를 입력받고 적합한 타입의 변수에 저장합니다.
-                int secondNum = sc.nextInt();
+                double secondNum = Double.parseDouble(sc.nextLine());
 
                 System.out.print("사칙연산 기호를 입력하세요 : ");
                 // 사칙연산 기호를 적합한 타입으로 선언한 변수에 저장합니다.
@@ -51,9 +54,9 @@ public class App {
                 char symbols = inputSymbols.charAt(0);
 
                 // 현재 저장된 데이터를 불러옴
-                List<Integer> calculatorArray = arithmeticCalculator.getResult();
+                List<Number> calculatorArray = arithmeticCalculator.getResult();
                 // 계산 결과 값
-                int total = arithmeticCalculator.calculate(firstNum, secondNum, symbols);
+                double total = arithmeticCalculator.calculate(firstNum, secondNum, symbols);
                 // 계산 결과 값을 가져온 필드 list 에 저장
                 calculatorArray.add(total);
                 // 필드에 저장
