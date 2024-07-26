@@ -1,4 +1,6 @@
-package calculator;
+package calculator.operator.impl;
+
+import calculator.operator.Operation;
 
 public class AddOperator implements Operation {
 

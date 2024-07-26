@@ -1,6 +1,8 @@
-package calculator;
+package calculator.operator.impl;
 
-public class MultiplyOperator implements Operation{
+import calculator.operator.Operation;
+
+public class MultiplyOperator implements Operation {
 
     @Override
     public int operate(int firstNum, int secondNum) {

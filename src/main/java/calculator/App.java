@@ -1,7 +1,9 @@
 package calculator;
 
-import java.util.ArrayList;
-import java.util.Arrays;
+import calculator.exception.DivisionByZeroException;
+import calculator.exception.InvalidOperatorException;
+import calculator.operator.OperatorFactory;
+
 import java.util.List;
 import java.util.Scanner;
 

@@ -1,4 +1,4 @@
-package calculator;
+package calculator.exception;
 
 // DivisionByZeroException.java
 public class DivisionByZeroException extends Exception {

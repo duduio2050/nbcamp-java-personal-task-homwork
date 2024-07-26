@@ -1,4 +1,10 @@
-package calculator;
+package calculator.operator;
+
+import calculator.operator.impl.ModOperator;
+import calculator.operator.impl.AddOperator;
+import calculator.operator.impl.DivideOperator;
+import calculator.operator.impl.MultiplyOperator;
+import calculator.operator.impl.SubtractOperator;
 
 import java.util.HashMap;
 import java.util.Map;

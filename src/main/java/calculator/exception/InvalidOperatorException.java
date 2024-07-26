@@ -1,4 +1,4 @@
-package calculator;
+package calculator.exception;
 
 // InvalidOperatorException.java
 public class InvalidOperatorException extends Exception {

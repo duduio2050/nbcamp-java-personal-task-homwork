@@ -1,5 +1,8 @@
 package calculator;
 
+import calculator.operator.Operation;
+import calculator.operator.OperatorFactory;
+
 public class ArithmeticCalculator extends Calculator{
 
     Operation operator;

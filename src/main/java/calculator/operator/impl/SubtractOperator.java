@@ -1,6 +1,8 @@
-package calculator;
+package calculator.operator.impl;
 
-public class SubtractOperator implements Operation{
+import calculator.operator.Operation;
+
+public class SubtractOperator implements Operation {
 
     @Override
     public int operate(int firstNum, int secondNum) {
