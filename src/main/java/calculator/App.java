@@ -45,18 +45,10 @@ public class App {
                 // Scanner를 사용하여 양의 정수를 입력받고 적합한 타입의 변수에 저장합니다.
                 int secondNum = sc.nextInt();
 
-                if(secondNum == 0) {
-                    throw new DivisionByZeroException("분모는 0이 될 수 없습니다.");
-                }
-
                 System.out.print("사칙연산 기호를 입력하세요 : ");
                 // 사칙연산 기호를 적합한 타입으로 선언한 변수에 저장합니다.
                 String inputSymbols = sc.next();
                 char symbols = inputSymbols.charAt(0);
-
-                if (symbols != '+' && symbols != '-' && symbols != '*' && symbols != '/'){
-                    throw new InvalidOperatorException("올바른 연산 기호를 입력해주세요.");
-                }
 
                 // 현재 저장된 데이터를 불러옴
                 List<Integer> calculatorArray = arithmeticCalculator.getResult();

@@ -1,5 +1,8 @@
 package calculator;
 
+import calculator.exception.DivisionByZeroException;
+import calculator.exception.InvalidOperatorException;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -47,7 +50,7 @@ public abstract class Calculator {
         this.circleAreaData = circleAreaData;
     }
 
-    public abstract int calculate(int firstNum, int secondNum, char operation);
+    public abstract int calculate(int firstNum, int secondNum, char operation) throws DivisionByZeroException, InvalidOperatorException;
 
     public abstract double calculateCircle(int r);
 
