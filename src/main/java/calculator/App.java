@@ -72,9 +72,10 @@ public class App {
                 sc.nextLine();
 
                 // 필드에 저장한 값보다 큰 데이터들을 출력
-                String search = arithmeticCalculator.search(calculatorArray, total);
+                arithmeticCalculator.search(calculatorArray, total);
+                String search = calculatorArray.stream().filter(calculator -> calculator.intValue() > total).map(Object::toString).collect(Collectors.joining(","));
 
-                System.out.println(total + " 보다 큰 값 : " + search);
+                System.out.println(search);
 
                 System.out.println("결과: " + total);
 

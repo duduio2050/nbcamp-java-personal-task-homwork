@@ -21,7 +21,7 @@ public class ArithmeticCalculator extends Calculator{
     }
 
     @Override
-    public <T extends Number, Y extends Number> double calculate(T firstNum, Y secondNum, char operation) throws  InvalidOperatorException, DivisionByZeroException {
+    public <T extends Number, Y extends Number> double calculate(T firstNum, Y secondNum, char operation) throws InvalidOperatorException, DivisionByZeroException {
 
         operator = operatorFactory.getOperation(operation);
         double total = operator.operate(firstNum, secondNum);
