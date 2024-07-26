@@ -4,8 +4,11 @@ import calculator.exception.DivisionByZeroException;
 import calculator.exception.InvalidOperatorException;
 import calculator.operator.OperatorFactory;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class App {
 
@@ -67,6 +70,11 @@ public class App {
                 // 이때 nextInt()가 버퍼의 내용을 가져올 때 개행문자를 무시하고 가져오기 때문에 10만 가져오게 된다.
                 // 그러면 버퍼에 \n이 남아있는데 nextLine()은 공백문자, 개행문자를 포함시키기 때문에 \n을 가져오게되고 다음 코드로 넘어가버리는 것이다.
                 sc.nextLine();
+
+                // 필드에 저장한 값보다 큰 데이터들을 출력
+                String search = arithmeticCalculator.search(calculatorArray, total);
+
+                System.out.println(total + " 보다 큰 값 : " + search);
 
                 System.out.println("결과: " + total);
 
