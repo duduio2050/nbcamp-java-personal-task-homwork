@@ -1,10 +1,9 @@
 package calculator;
 
-public class AddOperator implements Operation {
-
+public class ModOperator implements Operation{
     @Override
     public int operate(int firstNum, int secondNum) {
         /* 구현 */
-        return firstNum + secondNum;
+        return firstNum % secondNum;
     }
 }

@@ -6,10 +6,13 @@ import java.util.List;
 import java.util.Scanner;
 
 public class App {
+
     public static void main(String[] args) throws InvalidOperatorException, DivisionByZeroException {
 
+        OperatorFactory operatorFactory = new OperatorFactory();
+
         // 사칙연산 객체 인스턴스 생성
-        ArithmeticCalculator arithmeticCalculator = new ArithmeticCalculator();
+        ArithmeticCalculator arithmeticCalculator = new ArithmeticCalculator(operatorFactory);
         // 원의 넓이 객체 인스턴스 생성
         CircleCalculator circleCalculator = new CircleCalculator();
 
